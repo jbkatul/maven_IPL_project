@@ -43,7 +43,16 @@ public class IPLService {
 		}
 		return filtered;
 		
+<<<<<<< HEAD
 		
+=======
+	}
+	
+	public int getPlayerCount() {
+	    IPLDao d = new IPLDao();
+	    List<Player> players = d.getList();
+	    return players.size();
+>>>>>>> 6c69828 (Initial commit - Maven IPL Project)
 	}
 	
 	 // ✅ NEW METHOD

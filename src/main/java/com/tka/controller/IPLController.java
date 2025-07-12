@@ -36,6 +36,7 @@ public class IPLController {
 		List<Player> l=s.BatsmanOrBowler(string1,string2);
 		return l;
 	}
+<<<<<<< HEAD
 		  // ✅ NEW METHOD
 	    public List<Player> getPlayersByRuns(int runs) {
 	        IPLService s = new IPLService();
@@ -44,5 +45,11 @@ public class IPLController {
 	    
 	}
 	
+=======
+	public int getPlayerCount() {
+	    IPLService s = new IPLService();
+	    return s.getPlayerCount();
+	}
+>>>>>>> 6c69828 (Initial commit - Maven IPL Project)
 
 }
