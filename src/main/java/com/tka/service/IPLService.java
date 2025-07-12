@@ -43,4 +43,15 @@ public class IPLService {
 		}
 		return filtered;
 	}
+			public List<Player> getList(String tn) {
+			List<Player> milist =  new ArrayList<Player>();
+			List<Player> List = this.getList();
+			
+		for(Player player : List) {
+				if(player.getTname().equalsIgnoreCase(tn)) {
+					milist.add(player);
+				}
+		}
+			return milist;
+		}
 }

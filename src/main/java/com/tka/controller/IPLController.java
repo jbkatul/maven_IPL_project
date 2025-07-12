@@ -36,5 +36,12 @@ public class IPLController {
 		List<Player> l=s.BatsmanOrBowler(string1,string2);
 		return l;
 	}
+	public List<Player> getallplayers(String tn) {
+	
+				IPLService s = new IPLService();
+				List<Player> List = s.getList(tn);
+				
+				return List;
+			}
 
 }

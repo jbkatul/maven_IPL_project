@@ -51,6 +51,9 @@ public class IPLClient {
 		List<Player> p=iplController.BatsmanOrBowler("mi","bowler");
 		System.out.println("Player who is in mi Team And Who is Batsman\n" +p);
 
+		List<Player> allplayer_list=iplController.getallplayers("mi");
+			System.out.println("all players list: \n" + allplayer_list);
+		
 	}
 
 }
