@@ -42,5 +42,22 @@ public class IPLService {
 			}
 		}
 		return filtered;
+		
+		
 	}
+	
+	 // ✅ NEW METHOD
+    public List<Player> getPlayersByRuns(int runs) {
+        List<Player> list = getList();
+        List<Player> result = new ArrayList<>();
+        for (Player p : list) {
+            if (p.getRuns() > runs) {
+                result.add(p);
+            }
+        
+     
+        }
+		return result;
+
+    }
 }
