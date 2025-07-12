@@ -50,7 +50,18 @@ public class IPLClient {
 		
 		List<Player> p=iplController.BatsmanOrBowler("mi","bowler");
 		System.out.println("Player who is in mi Team And Who is Batsman\n" +p);
-
+		
+		
+		//udhav  method to find player whose starts
+		
+		List<Player> hPlayers = iplController.getPlayersStartingWithH();
+		System.out.println("Players whose names start with 'h':");
+		for (Player p1 : hPlayers) {
+			System.out.println(p1);
+		}
+	
+	}
+	
+	
 	}
 
-}

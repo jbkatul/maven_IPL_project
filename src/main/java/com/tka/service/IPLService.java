@@ -43,4 +43,18 @@ public class IPLService {
 		}
 		return filtered;
 	}
+	
+  //  Added one new method  to find all player whose name start with h
+	public List<Player> getPlayersStartingWithH() {
+		IPLDao d = new IPLDao();
+		List<Player> allPlayers = d.getList();
+		List<Player> filtered = new ArrayList<>();
+
+		for (Player p : allPlayers) {
+			if (p.getPname().toLowerCase().startsWith("h")) {
+				filtered.add(p);
+			}
+		}
+		return filtered;
+	}
 }

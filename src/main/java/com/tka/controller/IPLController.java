@@ -36,5 +36,13 @@ public class IPLController {
 		List<Player> l=s.BatsmanOrBowler(string1,string2);
 		return l;
 	}
+	
+	// ✅ New method
+		public List<Player> getPlayersStartingWithH() {
+			IPLService s = new IPLService();
+			List<Player> l = s.getPlayersStartingWithH();
+			return l;
+		}
+	}
+	
 
-}
