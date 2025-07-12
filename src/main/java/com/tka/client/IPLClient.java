@@ -1,8 +1,10 @@
 package com.tka.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tka.controller.IPLController;
+import com.tka.dao.IPLDao;
 import com.tka.entity.Player;
 
 public class IPLClient {
@@ -55,8 +57,22 @@ public class IPLClient {
         // New method: players with runs greater than given number
         List<Player> topScorers = iplController.getPlayersByRuns(5000);
         System.out.println("Players with runs greater than 5000:\n" + topScorers);
+        
+        List<Player> hPlayers = iplController.getPlayersStartingWithH();
+		System.out.println("Players whose names start with 'h':");
+		for (Player p1 : hPlayers) {
+			System.out.println(p1);
+		}
+		
+
+		List<Player> hPlayers1 = iplController.getPlayersStartingWithH();
+		System.out.println("Players whose names start with 'h':");
+		for (Player p1 : hPlayers1) {
+			System.out.println(p1);
 
 
+	
 	}
-
+	}
 }
+

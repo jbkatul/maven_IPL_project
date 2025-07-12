@@ -43,6 +43,13 @@ public class IPLController {
 	        return l;
 	    
 	}
+	    
+	 // ✅ New method
+	 		public List<Player> getPlayersStartingWithH() {
+	 			IPLService s = new IPLService();
+	 			List<Player> l = s.getPlayersStartingWithH();
+	 			return l;
+	 		}
 	
 
 }
