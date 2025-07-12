@@ -7,9 +7,9 @@ public class IPLUtility {
 
 	Connection conn=null;
 	String path="com.mysql.cj.jdbc.Driver";
-	String url="jdbc:mysql://localhost:3306/adv226";
+	String url="jdbc:mysql://localhost:3306/AdvBatch226db";
 	String user="root";
-	String password="root";
+	String password="Vaibhavi@2004";
 	public Connection connect() {
 		try {
 			Class.forName(path);

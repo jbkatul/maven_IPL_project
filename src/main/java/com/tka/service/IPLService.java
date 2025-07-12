@@ -60,4 +60,21 @@ public class IPLService {
 		return result;
 
     }
+
+	public List<Player> getRunsWickets() {
+		List<Player> pl = getList();
+		List<Player> player = new ArrayList<>();
+		
+		for(Player p : pl) {
+			if(p.getRuns() > 2000 && p.getWickets() >500) {
+				player.add(p);
+			}
+		}
+		
+		
+		return player;
+	}
+    
+	
+    
 }
