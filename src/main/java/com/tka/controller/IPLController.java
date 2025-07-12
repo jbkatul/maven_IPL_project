@@ -43,6 +43,12 @@ public class IPLController {
 	        return l;
 	    
 	}
+
+		public List<Player> getBestPlayers() {
+			  IPLService s = new IPLService();
+			List<Player>bestPlayers=s.getBestPlayers();
+			return bestPlayers;
+		}
 	
 
 }

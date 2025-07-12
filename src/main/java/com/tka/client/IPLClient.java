@@ -55,8 +55,13 @@ public class IPLClient {
         // New method: players with runs greater than given number
         List<Player> topScorers = iplController.getPlayersByRuns(5000);
         System.out.println("Players with runs greater than 5000:\n" + topScorers);
-
-
+       
+        //Method that gives BEST PLAYERS
+        List<Player>bestPlayers=iplController.getBestPlayers();
+        System.out.println("BEST PLAYERS based on maximum runs scored and most wickets taken");
+        System.out.println("Best Batsman : "+bestPlayers.get(0));
+        System.out.println("Best Bowler : "+bestPlayers.get(1));
+        
 	}
 
 }
