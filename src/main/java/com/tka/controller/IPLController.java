@@ -43,6 +43,11 @@ public class IPLController {
 	        return l;
 	    
 	}
-	
+
+		public List<Player> getRunsWickets(int runs,int wickets) {
+			IPLService service = new IPLService();
+			List<Player> player = service.getRunsWickets();
+			return player;
+		}
 
 }

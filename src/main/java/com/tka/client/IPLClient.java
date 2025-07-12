@@ -48,15 +48,28 @@ public class IPLClient {
 	
 		//batsman/bowler
 		
-		List<Player> p=iplController.BatsmanOrBowler("mi","bowler");
-		System.out.println("Player who is in mi Team And Who is Batsman\n" +p);
+//		List<Player> p=iplController.BatsmanOrBowler("mi","bowler");
+//		System.out.println("Player who is in mi Team And Who is Batsman\n" +p);
+//		
+//
+//        // New method: players with runs greater than given number
+//        List<Player> topScorers = iplController.getPlayersByRuns(5000);
+//        System.out.println("Players with runs greater than 5000:\n" + topScorers);
+
+        
+       
+		// New Method :players who have runs more than 2000 and wickets more than 500
+		List<Player> player = iplController.getRunsWickets(2000,500);
+		System.out.println("\nplayers who have runs more than 2000 and wickets more than 500 : "+player);
 		
-
-        // New method: players with runs greater than given number
-        List<Player> topScorers = iplController.getPlayersByRuns(5000);
-        System.out.println("Players with runs greater than 5000:\n" + topScorers);
-
-
+		
+        
 	}
 
 }
+
+
+
+
+
+

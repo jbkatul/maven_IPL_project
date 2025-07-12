@@ -1,3 +1,4 @@
+
 package com.tka.dao;
 
 import java.sql.Connection;
@@ -11,7 +12,6 @@ import com.tka.entity.Player;
 
 public class IPLDao {
 
-	
 	Connection conn = null;
 	PreparedStatement st = null;
 	ResultSet rs = null;
@@ -21,7 +21,7 @@ public class IPLDao {
 		conn = u.connect();
 	}
 	public List<Player> getList() {
-		String Query = "select * from player";
+		String Query = "select * from IPLPlayer";
 		List<Player> player = new ArrayList<Player>();
 		try {
 			st = conn.prepareStatement(Query);
@@ -44,7 +44,7 @@ public class IPLDao {
 	}
 	public int Insertdata(Player p) {
 		
-		String query="Insert into player values(?,?,?,?,?,?,?)";
+		String query="Insert into IPLPlayer values(?,?,?,?,?,?,?)";
 		try {
 			st=conn.prepareStatement(query);
 			st.setInt(1, p.getPid());
@@ -64,7 +64,7 @@ public class IPLDao {
 		return 0 ;
 	}
 	public int updatedate(int i, int j) {
-		String Query="update player set runs=? where pid=?";
+		String Query="update IPLPlayer set runs=? where pid=?";
 		try {
 			st=conn.prepareStatement(Query);
 			st.setInt(1, i);
@@ -78,7 +78,7 @@ public class IPLDao {
 		return 0;
 	}
 	public int deletedata(int i) {
-		String Query="delete from player where pid=?";
+		String Query="delete from IPLPlayer where pid=?";
 		try {
 			st=conn.prepareStatement(Query);
 			st.setInt(1, i);
@@ -91,6 +91,5 @@ public class IPLDao {
 		return 0;
 	}
 
-
-
 }
+

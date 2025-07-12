@@ -64,8 +64,8 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player [pid=" + pid + ", jn=" + jn + ", pname=" + pname + ", runs=" + runs + ", wickets=" + wickets
-				+ ", role=" + role + ", tname=" + tname + "]\n";
+				+ ", role=" + role + ", tname=" + tname + "]";
 	}
-	
+
 	
 }
