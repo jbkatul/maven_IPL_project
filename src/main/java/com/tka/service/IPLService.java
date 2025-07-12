@@ -43,4 +43,22 @@ public class IPLService {
 		}
 		return filtered;
 	}
+
+	public List<Player> getPlayersByTeamAndNameStart1(String team, char startingLetter) {
+	    IPLDao dao = new IPLDao();
+	    List<Player> allPlayers = dao.getList(); 
+	    List<Player> filteredPlayers = new ArrayList<Player>();
+
+	    for (Player p : allPlayers) {
+	        if ( p.getPname().toLowerCase().startsWith(String.valueOf(startingLetter).toLowerCase())) {
+	            filteredPlayers.add(p);
+	        }
+	    }
+
+	    return filteredPlayers;
+	}
+
+	
+
+	
 }

@@ -37,4 +37,9 @@ public class IPLController {
 		return l;
 	}
 
+	public List<Player> getPlayersByTeamAndNameStart1(String team, char startingLetter) {
+	    IPLService s = new IPLService();
+	    List<Player> l = s.getPlayersByTeamAndNameStart1(team, startingLetter);
+	    return l;
+	}
 }
