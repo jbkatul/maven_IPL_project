@@ -8,157 +8,97 @@ import com.tka.utility.SQLUtility;
 
 public class IPLDao {
 
-	Connection connection = null;
-	ResultSet resultSet = null;
-	PreparedStatement preparedStatement = null;
+    Connection connection = null;
+    ResultSet resultSet = null;
+    PreparedStatement preparedStatement = null;
 
-	String url = "jdbc:mysql://localhost:3306/advjava226db";
-	String user = "root";
-	String password = "root";
-	String selectAllQuery = "SELECT * FROM player";
-	String insertQuery = "INSERT INTO player VALUES (?, ?, ?, ?, ?, ?)";
-	String updateQuery = "UPDATE player SET jn=?, pname=?, runs=?, wickets=?, tname=? WHERE pid=?";
-	String deleteQuery = "DELETE FROM player WHERE pid=?";
-	String batsmanQuery = "SELECT * FROM player WHERE tname=? AND runs > 0";
-	String bowlerQuery = "SELECT * FROM player WHERE tname=? AND wickets > 0";
+    String selectAllQuery = "SELECT * FROM player";
+    String insertQuery = "INSERT INTO player VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String updateQuery = "UPDATE player SET runs=? WHERE pid=?";
+    String deleteQuery = "DELETE FROM player WHERE pid=?";
 
-	public List<Player> getAllPlayers() {
-		System.out.println("In IPLDao.getAllPlayers()");
-		List<Player> playerList = new ArrayList<>();
+    public List<Player> getAllPlayers() {
+        List<Player> players = new ArrayList<>();
+        try {
+            connection = SQLUtility.getConnection();
+            preparedStatement = connection.prepareStatement(selectAllQuery);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Player p = new Player(
+                    resultSet.getInt("pid"),
+                    resultSet.getInt("jn"),
+                    resultSet.getString("pname"),
+                    resultSet.getInt("runs"),
+                    resultSet.getInt("wickets"),
+                    resultSet.getString("role"),
+                    resultSet.getString("tname")
+                );
+                players.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
+        }
+        return players;
+    }
 
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(selectAllQuery);
-			resultSet = preparedStatement.executeQuery();
+    public int insertPlayer(Player p) {
+        try {
+            connection = SQLUtility.getConnection();
+            preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setInt(1, p.getPid());
+            preparedStatement.setInt(2, p.getJn());
+            preparedStatement.setString(3, p.getPname());
+            preparedStatement.setInt(4, p.getRuns());
+            preparedStatement.setInt(5, p.getWickets());
+            preparedStatement.setString(6, p.getRole());
+            preparedStatement.setString(7, p.getTname());
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
+        }
+        return 0;
+    }
 
-			while (resultSet.next()) {
-				playerList.add(mapResultSetToPlayer(resultSet));
-			}
+    public int updatePlayerStats(int runs, int pid) {
+        try {
+            connection = SQLUtility.getConnection();
+            preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setInt(1, runs);
+            preparedStatement.setInt(2, pid);
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
+        }
+        return 0;
+    }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
+    public int deletePlayer(int pid) {
+        try {
+            connection = SQLUtility.getConnection();
+            preparedStatement = connection.prepareStatement(deleteQuery);
+            preparedStatement.setInt(1, pid);
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
+        }
+        return 0;
+    }
 
-		return playerList;
-	}
-
-	public List<Player> getAllBatsman(String teamName) {
-		List<Player> list = new ArrayList<>();
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(batsmanQuery);
-			preparedStatement.setString(1, teamName);
-			resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				list.add(mapResultSetToPlayer(resultSet));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
-		return list;
-	}
-
-	public List<Player> getAllBallers(String teamName) {
-		List<Player> list = new ArrayList<>();
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(bowlerQuery);
-			preparedStatement.setString(1, teamName);
-			resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				list.add(mapResultSetToPlayer(resultSet));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
-		return list;
-	}
-
-	public int insertPlayer(Player player) {
-		int ack = 0;
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(insertQuery);
-
-			preparedStatement.setInt(1, player.getPid());
-			preparedStatement.setInt(2, player.getJn());
-			preparedStatement.setString(3, player.getPname());
-			preparedStatement.setInt(4, player.getRuns());
-			preparedStatement.setInt(5, player.getWickets());
-			preparedStatement.setString(6, player.getTname());
-
-			ack = preparedStatement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
-		return ack;
-	}
-
-	public int updatePlayer(Player player) {
-		int ack = 0;
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(updateQuery);
-
-			preparedStatement.setInt(1, player.getJn());
-			preparedStatement.setString(2, player.getPname());
-			preparedStatement.setInt(3, player.getRuns());
-			preparedStatement.setInt(4, player.getWickets());
-			preparedStatement.setString(5, player.getTname());
-			preparedStatement.setInt(6, player.getPid());
-
-			ack = preparedStatement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
-		return ack;
-	}
-
-	public int deletePlayer(int pid) {
-		int ack = 0;
-		try {
-			connection = SQLUtility.getConnection();
-			preparedStatement = connection.prepareStatement(deleteQuery);
-			preparedStatement.setInt(1, pid);
-			ack = preparedStatement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeResources();
-		}
-		return ack;
-	}
-
-	private Player mapResultSetToPlayer(ResultSet rs) throws SQLException {
-		return new Player(rs.getInt("pid"), rs.getInt("jn"), rs.getString("pname"), rs.getInt("runs"),
-				rs.getInt("wickets"), rs.getString("tname"));
-	}
-
-	private void closeResources() {
-		try {
-			if (resultSet != null)
-				resultSet.close();
-			if (preparedStatement != null)
-				preparedStatement.close();
-			if (connection != null)
-				connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private void closeResources() {
+        try {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

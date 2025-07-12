@@ -7,19 +7,21 @@ public class Player {
 	private String pname;
 	private int runs;
 	private int wickets;
+	private String role;
 	private String tname;
 
 	public Player() {
 		super();
 	}
 
-	public Player(int pid, int jn, String pname, int runs, int wickets, String tname) {
+	public Player(int pid, int jn, String pname, int runs, int wickets, String role, String tname) {
 		super();
 		this.pid = pid;
 		this.jn = jn;
 		this.pname = pname;
 		this.runs = runs;
 		this.wickets = wickets;
+		this.role = role;
 		this.tname = tname;
 	}
 
@@ -63,6 +65,14 @@ public class Player {
 		this.wickets = wickets;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getTname() {
 		return tname;
 	}
@@ -73,7 +83,8 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [pid=" + pid + ", jn=" + jn + ", pname=" + pname + ", tname=" + tname + "]";
+		return "Player [pid=" + pid + ", jn=" + jn + ", pname=" + pname +
+				", runs=" + runs + ", wickets=" + wickets +
+				", role=" + role + ", tname=" + tname + "]";
 	}
-
 }
