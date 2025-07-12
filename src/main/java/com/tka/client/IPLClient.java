@@ -1,14 +1,16 @@
 package com.tka.client;
 
+import com.tka.entity.Player;
+import com.tka.service.IPLService;
+
 public class IPLClient {
 
 	public static void main(String[] args) {
 
-		System.out.println("Welcome to the IPL Client Application!");
-		
-//		IPLController iplController = new IPLController();
-//		List<Player> allplayers = iplController.getAllPlayers();
-		
+		IPLService service = new IPLService();
+
+		Player topPlayer = service.getMostRunsPlayer();
+		System.out.println(" Player with Most Runs: " + topPlayer);
 	}
 
 }

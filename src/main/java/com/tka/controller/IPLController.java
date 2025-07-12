@@ -37,4 +37,8 @@ public class IPLController {
 	public int deletePlayer(int pid) {
 		return iplService.deletePlayer(pid);
 	}
+
+	public Player getMostRunsPlayer() {
+        return iplService.getMostRunsPlayer();
+    }
 }
