@@ -36,6 +36,7 @@ public class IPLController {
 		List<Player> l=s.BatsmanOrBowler(string1,string2);
 		return l;
 	}
+<<<<<<< HEAD
 		  // ✅ NEW METHOD
 	    public List<Player> getPlayersByRuns(int runs) {
 	        IPLService s = new IPLService();
@@ -44,5 +45,19 @@ public class IPLController {
 	    
 	}
 	
+=======
+	
+	public List<Player> GetBats(String syso) {
+		IPLService s=new IPLService();
+		List<Player> l=s.GetBats();
+		System.out.println(syso);
+		
+		return l;
+	}
+>>>>>>> fe51942 (done by ak)
 
+	public List<Player> GetBats1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
