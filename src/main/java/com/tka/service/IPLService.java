@@ -69,4 +69,14 @@ public class IPLService {
 		return result;
 
     }
+    public Player getPlayerByName(String name) {
+        IPLDao d = new IPLDao();
+        List<Player> players = d.getList();
+        for (Player p : players) {
+            if (p.getPname().equalsIgnoreCase(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
 }

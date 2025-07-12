@@ -52,4 +52,10 @@ public class IPLController {
 	}
 >>>>>>> 6c69828 (Initial commit - Maven IPL Project)
 
+public Player getPlayerByName(String name) {
+    IPLService s = new IPLService();
+    return s.getPlayerByName(name);
+}
+
+
 }
