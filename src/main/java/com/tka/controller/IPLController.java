@@ -44,5 +44,9 @@ public class IPLController {
 	    
 	}
 	
-
+	    public List<Player> getPlayersByRunsRange(int minruns,int maxruns) {
+	        IPLService s = new IPLService();
+	        List<Player> l = s.getPlayersByRunsRange(minruns,maxruns);
+	        return l; 
+	    }
 }
