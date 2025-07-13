@@ -60,12 +60,12 @@ public class IPLService {
 		return result;
 
     }
-    public List<Player> getPlayersByRunsRange(int minRuns, int maxRuns) {
+    public List<Player> getPlayersByRunsRange(int minruns, int maxruns) {
         List<Player> allPlayers = getList();
         List<Player> filteredPlayers = new ArrayList<>();
         
         for(Player player : allPlayers) {
-            if(player.getRuns() >= minRuns && player.getRuns() <= maxRuns) {
+            if(player.getRuns() >= minruns && player.getRuns() <= maxruns) {
                 filteredPlayers.add(player);
             }
         }
