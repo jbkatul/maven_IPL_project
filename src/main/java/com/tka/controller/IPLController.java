@@ -43,6 +43,14 @@ public class IPLController {
 	        return l;
 	    
 	}
+	 //  players with name length less than 4 letters
+		
+		public List<Player> getPlayersWithShortNames() {
+			IPLService s = new IPLService();
+			List<Player> l = s.getPlayersWithShortNames();
+			return l;
+		}
+
 	
 
 }
