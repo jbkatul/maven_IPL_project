@@ -7,6 +7,7 @@ import com.tka.dao.IPLDao;
 import com.tka.entity.Player;
 
 public class IPLService {
+	
 
 	public List<Player> getList() {
 		IPLDao d=new IPLDao();
@@ -58,6 +59,22 @@ public class IPLService {
      
         }
 		return result;
+		
+		
+
 
     }
+    public List<Player> getOnlyBowlers() {
+    	
+	    List<Player> allPlayers = getList(); // Assuming this returns all players
+	    List<Player> bowlers = new ArrayList<>();
+
+	    for (Player p : allPlayers) {
+	        if (p.getRole() != null && p.getRole().equalsIgnoreCase("bowler")) {
+	            bowlers.add(p);
+	        }
+	    }
+	    return bowlers;
+	}
+
 }
