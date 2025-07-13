@@ -6,7 +6,7 @@ import com.tka.entity.Player;
 import com.tka.service.IPLService;
 
 public class IPLController {
-
+	private IPLService iplService = new IPLService();
 	public List<Player> getList() {
 		IPLService s=new IPLService();
 		List<Player> l=s.getList();
@@ -43,6 +43,10 @@ public class IPLController {
 	        return l;
 	    
 	}
+	    public List<Player> getOnlyBowlers() {
+	        return iplService.getOnlyBowlers();
+	    }
+
 	
 
 }

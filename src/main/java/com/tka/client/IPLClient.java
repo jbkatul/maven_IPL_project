@@ -55,6 +55,12 @@ public class IPLClient {
         // New method: players with runs greater than given number
         List<Player> topScorers = iplController.getPlayersByRuns(5000);
         System.out.println("Players with runs greater than 5000:\n" + topScorers);
+        
+        List<Player> onlyBowlers = iplController.getOnlyBowlers();
+        System.out.println("Players who are only Bowlers:\n" + onlyBowlers);
+
+        
+        
 
 
 	}

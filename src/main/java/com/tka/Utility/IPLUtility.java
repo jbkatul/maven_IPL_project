@@ -7,7 +7,7 @@ public class IPLUtility {
 
 	Connection conn=null;
 	String path="com.mysql.cj.jdbc.Driver";
-	String url="jdbc:mysql://localhost:3306/adv226";
+	String url="jdbc:mysql://localhost:3306/ipl";
 	String user="root";
 	String password="root";
 	public Connection connect() {
