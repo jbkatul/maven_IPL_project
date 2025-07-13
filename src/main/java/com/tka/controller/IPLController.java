@@ -43,6 +43,15 @@ public class IPLController {
 	        return l;
 	    
 	}
+
+		public List<Player> getRunsofPlayer(int runs) {
+		IPLService s= new IPLService();
+		List<Player>l=s.getRunsofPlayer(runs);
+		
+			return l;
+		}
+
+		
+		}
 	
 
-}

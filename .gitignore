@@ -42,3 +42,4 @@ Thumbs.db
 # Maven specific
 .mvn/
 !/.mvn/wrapper/maven-wrapper.jar
+/bin/
