@@ -60,4 +60,16 @@ public class IPLService {
 		return result;
 
     }
+
+	public List<Player> getRunsofPlayer(int runs) {
+		List<Player>filterList=new ArrayList<>();
+		IPLDao d=new IPLDao();
+		List<Player>plist=d.getList();
+		for(Player newlist :plist) {
+			if(newlist.getRuns()< runs) {
+				filterList.add(newlist);
+			}
+		}
+		return filterList;
+	}
 }

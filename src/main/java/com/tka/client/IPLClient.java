@@ -56,7 +56,9 @@ public class IPLClient {
         List<Player> topScorers = iplController.getPlayersByRuns(5000);
         System.out.println("Players with runs greater than 5000:\n" + topScorers);
 
-
+        // lowest runs of player
+       // List<Player> lowruns=iplController.getRunsofPlayer(45000);
+		//System.out.println("lowest runs of player" + lowruns);
 	}
 
 }
