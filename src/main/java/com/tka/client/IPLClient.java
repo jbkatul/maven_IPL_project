@@ -56,6 +56,10 @@ public class IPLClient {
         List<Player> topScorers = iplController.getPlayersByRuns(5000);
         System.out.println("Players with runs greater than 5000:\n" + topScorers);
 
+      //players with name length less than 4 letters
+ 		List<Player> shortNamedPlayers = iplController.getPlayersWithShortNames();
+ 		System.out.println("Players with name length less than 4 letters:\n" + shortNamedPlayers);
+
 
 	}
 

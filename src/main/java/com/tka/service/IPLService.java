@@ -3,6 +3,7 @@ package com.tka.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tka.controller.IPLController;
 import com.tka.dao.IPLDao;
 import com.tka.entity.Player;
 
@@ -60,4 +61,16 @@ public class IPLService {
 		return result;
 
     }
+ // ✅ NEW METHOD: players with name length less than 4 letters
+ 	public List<Player> getPlayersWithShortNames() {
+ 		List<Player> list = getList();
+ 		List<Player> result = new ArrayList<>();
+ 		for (Player p : list) {
+ 			if (p.getPname().length() < 4) {
+ 				result.add(p);
+ 			}
+ 		}
+ 		return result;
+ 	}
+ 
 }
