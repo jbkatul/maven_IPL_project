@@ -45,11 +45,19 @@ public class IPLController {
 
 	}
 
+
+		public List<Player> getBestPlayers() {
+			  IPLService s = new IPLService();
+			List<Player>bestPlayers=s.getBestPlayers();
+			return bestPlayers;
+		}
+
 	public Player getPlayerWithMaxRuns() {
 		IPLService s = new IPLService();
 		return s.getPlayerWithMaxRuns();
 
 	}
+
 
 	
 	    public List<Player> getPlayersByRunsRange(int minruns,int maxruns) {

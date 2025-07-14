@@ -46,6 +46,24 @@ public class IPLClient {
 //			System.out.println("Data Not Deleted");
 //		}
 
+	
+		//batsman/bowler
+		
+		List<Player> p=iplController.BatsmanOrBowler("mi","bowler");
+		System.out.println("Player who is in mi Team And Who is Batsman\n" +p);
+		
+
+        // New method: players with runs greater than given number
+        List<Player> topScorers = iplController.getPlayersByRuns(5000);
+        System.out.println("Players with runs greater than 5000:\n" + topScorers);
+       
+        //Method that gives BEST PLAYERS
+        List<Player>bestPlayers=iplController.getBestPlayers();
+        System.out.println("BEST PLAYERS based on maximum runs scored and most wickets taken");
+        System.out.println("Best Batsman : "+bestPlayers.get(0));
+        System.out.println("Best Bowler : "+bestPlayers.get(1));
+    
+
 		// batsman/bowler
 
 		List<Player> p = iplController.BatsmanOrBowler("mi", "bowler");
@@ -66,6 +84,7 @@ public class IPLClient {
 		} else {
 			System.out.println("No player data available.");
 		}
+
 
 
 	}

@@ -58,6 +58,40 @@ public class IPLService {
 		return result;
 
 
+	}
+
+	public List<Player> getBestPlayers() {
+		Player player = new Player();
+		List<Player> bestPlayers = new ArrayList<>();
+		List<Player> allPlayers = this.getList();
+		Player bestBatsman = null;
+		Player bestBowler = null;
+		int maxRuns = 0;
+		int maxsWK = 0;
+		for (Player p : allPlayers) {
+
+			if (p.getRuns() > maxRuns) {
+
+				maxRuns = p.getRuns();
+				bestBatsman = p;
+			}
+			if (p.getWickets() > maxsWK) {
+
+				maxsWK = p.getWickets();
+				bestBowler = p;
+			}
+		}
+		if (bestBatsman != null) {
+			bestPlayers.add(bestBatsman);
+		}
+		if (bestBowler != null) {
+			bestPlayers.add(bestBowler);
+		}
+
+		return bestPlayers;
+	}
+
+
     }
     public List<Player> getPlayersByRunsRange(int minruns, int maxruns) {
         List<Player> allPlayers = getList();
@@ -77,6 +111,7 @@ public class IPLService {
 		IPLDao d = new IPLDao();
 		return d.getList().stream().max((p1, p2) -> Integer.compare(p1.getRuns(), p2.getRuns())).orElse(null);
 	}
+
 
 
 }

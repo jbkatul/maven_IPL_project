@@ -9,6 +9,10 @@ public class Player {
 	private int wickets;
 	private String role;
 	private String tname;
+	
+	public Player() {
+		
+	}
 	public Player(int pid, int jn, String pname, int runs, int wickets, String role, String tname) {
 		super();
 		this.pid = pid;
