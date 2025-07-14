@@ -8,6 +8,8 @@ import com.tka.entity.Player;
 
 public class IPLService {
 
+	private IPLDao dao = new IPLDao();
+
 	public List<Player> getList() {
 		IPLDao d = new IPLDao();
 		List<Player> l = d.getList();
@@ -57,20 +59,18 @@ public class IPLService {
 		}
 		return result;
 
+	}
 
-    }
-    public List<Player> getPlayersByRunsRange(int minruns, int maxruns) {
-        List<Player> allPlayers = getList();
-        List<Player> filteredPlayers = new ArrayList<>();
-        
-        for(Player player : allPlayers) {
-            if(player.getRuns() >= minruns && player.getRuns() <= maxruns) {
-                filteredPlayers.add(player);
-            }
-        }
-        return filteredPlayers; 
-    }
+	public List<Player> getPlayersByRunsRange(int minruns, int maxruns) {
+		List<Player> allPlayers = getList();
+		List<Player> filteredPlayers = new ArrayList<>();
 
+		for (Player player : allPlayers) {
+			if (player.getRuns() >= minruns && player.getRuns() <= maxruns) {
+				filteredPlayers.add(player);
+			}
+		}
+		return filteredPlayers;
 	}
 
 	public Player getPlayerWithMaxRuns() {
@@ -78,5 +78,16 @@ public class IPLService {
 		return d.getList().stream().max((p1, p2) -> Integer.compare(p1.getRuns(), p2.getRuns())).orElse(null);
 	}
 
+	public Player getMostRunsPlayer() {
+		List<Player> players = dao.getList(); 
+		Player topPlayer = null;
 
+		for (Player p : players) {
+			if (topPlayer == null || p.getRuns() > topPlayer.getRuns()) {
+				topPlayer = p;
+			}
+		}
+
+		return topPlayer;
+	}
 }
