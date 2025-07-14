@@ -57,11 +57,16 @@ public class IPLClient {
 		IPLController controller = new IPLController();
 		Player topScorer = controller.getPlayerWithMaxRuns();
 
+
+        List<Player> playersRunsRange = iplController.getPlayersByRunsRange(1000, 4000);
+        System.out.println("\nPlayers with Runs between 1000 and 4000:\n" + playersRunsRange);
+
 		if (topScorer != null) {
 			System.out.println("Top Scorer: " + topScorer);
 		} else {
 			System.out.println("No player data available.");
 		}
+
 
 	}
 
