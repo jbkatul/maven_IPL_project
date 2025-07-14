@@ -66,6 +66,13 @@ public class IPLClient {
 		} else {
 			System.out.println("No player data available.");
 		}
+		
+		Player SPlayer = iplController.getPlayerByName("Virat Kohli");
+		if (SPlayer != null) {
+		    System.out.println("Player found: " + SPlayer);
+		} else {
+		    System.out.println("Player not found!");
+		}
 
 
 	}

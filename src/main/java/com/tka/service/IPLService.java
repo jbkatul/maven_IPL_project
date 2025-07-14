@@ -77,6 +77,17 @@ public class IPLService {
 		IPLDao d = new IPLDao();
 		return d.getList().stream().max((p1, p2) -> Integer.compare(p1.getRuns(), p2.getRuns())).orElse(null);
 	}
+	
+	 public Player getPlayerByName(String name) {
+	        IPLDao d = new IPLDao();
+	        List<Player> players = d.getList();
+	        for (Player p : players) {
+	            if (p.getPname().equalsIgnoreCase(name)) {
+	                return p;
+	            }
+	        }
+	        return null;
+	    }
 
 
 }
