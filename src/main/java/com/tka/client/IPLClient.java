@@ -10,13 +10,13 @@ public class IPLClient {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to the IPL Client Application!");
-		//Fetch all Data From Table
+		// Fetch all Data From Table
 		IPLController iplController = new IPLController();
 		List<Player> allplayers = iplController.getList();
 		System.out.println(allplayers);
-	
+
 //InsertData
-		
+
 //		Players p=new Players(22, 21, "Shreyas Iyer", 3500, 10, "Batsman", "PBSK");
 //		int l=iplController.Insertdata(p);
 //		if(l!=0) {
@@ -26,8 +26,8 @@ public class IPLClient {
 //			System.out.println("Data not Inserted");
 //		}
 
-		//Update data
-		
+		// Update data
+
 //		int l=iplController.updatedata(2200,8);
 //		if(l!=0) {
 //			System.out.println("Data Updated");
@@ -35,9 +35,9 @@ public class IPLClient {
 //		else {
 //			System.out.println("Data not updated");
 //		}
-		
-		//Delete Data
-		
+
+		// Delete Data
+
 //		int l=iplController.deletedata(22);
 //		if(l!=0) {
 //			System.out.println("Data Deleted");
@@ -45,6 +45,7 @@ public class IPLClient {
 //		else {
 //			System.out.println("Data Not Deleted");
 //		}
+
 	
 		//batsman/bowler
 		
@@ -61,7 +62,31 @@ public class IPLClient {
         System.out.println("BEST PLAYERS based on maximum runs scored and most wickets taken");
         System.out.println("Best Batsman : "+bestPlayers.get(0));
         System.out.println("Best Bowler : "+bestPlayers.get(1));
-        
+    
+
+		// batsman/bowler
+
+		List<Player> p = iplController.BatsmanOrBowler("mi", "bowler");
+		System.out.println("Player who is in mi Team And Who is Batsman\n" + p);
+
+		// New method: players with runs greater than given number
+		List<Player> topScorers = iplController.getPlayersByRuns(5000);
+		System.out.println("Players with runs greater than 5000:\n" + topScorers);
+		IPLController controller = new IPLController();
+		Player topScorer = controller.getPlayerWithMaxRuns();
+
+
+        List<Player> playersRunsRange = iplController.getPlayersByRunsRange(1000, 4000);
+        System.out.println("\nPlayers with Runs between 1000 and 4000:\n" + playersRunsRange);
+
+		if (topScorer != null) {
+			System.out.println("Top Scorer: " + topScorer);
+		} else {
+			System.out.println("No player data available.");
+		}
+
+
+
 	}
 
 }

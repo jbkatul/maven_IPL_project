@@ -57,6 +57,7 @@ public class IPLService {
 		}
 		return result;
 
+
 	}
 
 	public List<Player> getBestPlayers() {
@@ -89,4 +90,28 @@ public class IPLService {
 
 		return bestPlayers;
 	}
+
+
+    }
+    public List<Player> getPlayersByRunsRange(int minruns, int maxruns) {
+        List<Player> allPlayers = getList();
+        List<Player> filteredPlayers = new ArrayList<>();
+        
+        for(Player player : allPlayers) {
+            if(player.getRuns() >= minruns && player.getRuns() <= maxruns) {
+                filteredPlayers.add(player);
+            }
+        }
+        return filteredPlayers; 
+    }
+
+	}
+
+	public Player getPlayerWithMaxRuns() {
+		IPLDao d = new IPLDao();
+		return d.getList().stream().max((p1, p2) -> Integer.compare(p1.getRuns(), p2.getRuns())).orElse(null);
+	}
+
+
+
 }
