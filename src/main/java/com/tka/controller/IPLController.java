@@ -65,6 +65,11 @@ public class IPLController {
 	        List<Player> l = s.getPlayersByRunsRange(minruns,maxruns);
 	        return l; 
 	    }
+	    
+	    public Player getPlayerByName(String name) {
+	        IPLService s = new IPLService();
+	        return s.getPlayerByName(name);
+	    }
 
 
 
